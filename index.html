@@ -1,13 +1,56 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/src/assets/Logo.png"
+      sizes="16x16"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <title>Phum-Album</title>
+    <style>
+      audio {
+        display: none;
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <audio
+        id="myAudio"
+        src="./src/assets/3439524189.mp3"
+        controls="controls"
+      ></audio>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          var audio = document.getElementById("myAudio");
+
+          document.addEventListener("click", function () {
+            playAudio();
+          });
+
+          function playAudio() {
+            if (audio.paused) {
+              audio
+                .play()
+                .then(() => {
+                  console.log("เพลงกำลังเล่น");
+                })
+                .catch((error) => {
+                  console.error("เกิดข้อผิดพลาดในการเล่นเพลง:", error);
+                });
+            }
+          }
+
+          audio.addEventListener("ended", function () {
+            console.log("เพลงเล่นจบ");
+          });
+        });
+      </script>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

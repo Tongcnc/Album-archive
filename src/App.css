@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-snap-type: y mandatory;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: "Syne", sans-serif;
+}
+
+*::-webkit-scrollbar {
+  width: 0px;
+  background: none;
+}
+
+*::-webkit-scrollbar-track {
+  background: none;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: none;
+}
+
+.container {
+  scroll-snap-type: mandatory;
+  scroll-snap-points-y: repeat(300px);
+  scroll-snap-type: y mandatory;
+}
+
+.child {
+  scroll-snap-align: start;
+}
+
+.container-vinyl {
+  position: relative;
+  display: flex;
+  padding-top: 50px;
+}
+
+.cover-vinyl {
+  width: 400px;
+  height: 400px;
+  box-shadow: 16px 16px 36px rgba(0, 0, 0, 0.3);
+}
+
+.vinyl {
+  position: absolute;
+  left: 200px;
+  width: 400px;
+  height: 400px;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  transform-origin: 50% 50%;
+  animation-name: turnAround;
+  z-index: 2;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .cover-vinyl {
+    width: 400px;
+    height: 400px;
+    box-shadow: 16px 16px 36px rgba(0, 0, 0, 0.3);
+  }
+  .vinyl {
+    width: 360px;
+    height: 360px;
+    left: 120px;
+  }
+}
+
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .cover-vinyl {
+    width: 300px;
+    height: 300px;
+  }
+
+  .vinyl {
+    width: 300px;
+    height: 300px;
+    left: 100px;
+  }
+}
+
+@keyframes turnAround {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
